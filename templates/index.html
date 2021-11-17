@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="page">
+<div class="row">
+    <div class="column">
+        <h1>Image</h1>
+        <img alt="image" src="{{url_for('static', filename=session.get('img_name'))}}">
+    </div>
+    <div class="column">
+        <h1>Réglages</h1>
+ <form method="post" action="/edit">
+        <input type="submit" name="black" value="Black and White">
+     <input type="submit" name="brightnessplus" value="Increase brightness">
+     <input type="submit" name="brightnessminus" value="Decrease brightness">
+     <input type="submit" name="reset" value="Reset">
+
+    </form>
+
+    </div>
+</div>
+    </div>
+</body>
+</html>
+
+<style>
+    .row {
+        display: flex;
+    }
+
+    .column {
+        flex: 50%;
+    }
+    .page {
+  padding-top: 50px;
+  padding-right: 30px;
+  padding-bottom: 50px;
+  padding-left: 80px;
+}
+</style>
