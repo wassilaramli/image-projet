@@ -47,10 +47,6 @@ def upload_image():
 
 
 
-@app.route('/image')
-def imag():
-    image = Image.open('static/img_temp.png')
-    return serve_pil_image(image)
 
 @app.route('/')
 def show():
@@ -87,6 +83,17 @@ def edit_image():
             im_output.save(get_file())
 
     return render_template('index.html')
+
+
+@app.route('/newspaper')
+def add_newspaper():
+    image = Image.open(get_file())
+    news = Image.open(UPLOAD_FOLDER + "/" + "news.png")
+    image.paste(news, (0, 0), news)
+    image.save(get_file())
+
+    return render_template('newspaper.html')
+
 
 
 app.run()
