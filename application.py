@@ -160,16 +160,16 @@ def add_newspaper():
 
     elif request.method == 'POST':
         print(request.form)
-        if request.form.get('declic-junior.x'):
+        if request.form.get('declic-junior'):
             connect_newspaper("declic-junior.png")
 
-        if request.form.get('elle-maigrir.x'):
+        if request.form.get('elle-maigrir'):
             connect_newspaper("elle-maigrir.png")
 
-        if request.form.get('journal-mickey.x'):
+        if request.form.get('journal-mickey'):
             connect_newspaper("journal-mickey.png")
 
-        if request.form.get('paris-match.x'):
+        if request.form.get('paris-match'):
             connect_newspaper("paris-match.png")
 
 
