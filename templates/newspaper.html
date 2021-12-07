@@ -7,12 +7,20 @@
 <body>
 <div class="page">
 <div class="row">
-    <div class="column" style="background-color: antiquewhite">
+    <div class="column" >
         <h1>Image</h1>
         <img alt="image" src="{{url_for('static', filename=session.get('img_name'))}}" height="500px">
     </div>
     <div class="column">
-        <h1>Réglages</h1>
+        <h1>Choix du journal</h1>
+        <form action="/newspaper" method="post">
+            <input type="submit" name="declic-junior" value="Declic Junior">
+            <input type="submit" name="elle-maigrir" value="Elle Maigrir">
+            <input type="submit" name="journal-mickey" value="Journal Mickey">
+            <input type="submit" name="paris-match" value="Paris Match">
+            <input type="submit" name="reset" value="Annuler modification">
+            <input type="submit" name="download" value="Télécharger ->">
+        </form>
 
 
     </div>

@@ -5,9 +5,37 @@
     <title>Upload</title>
 </head>
 <body>
-<form method=post enctype=multipart/form-data>
-    <input type=file name=file>
-    <input type=submit value=Upload>
-</form>
+<div class="page">
+    <div class="column">
+        <h1>Créez votre Une de journal!</h1>
+        <h4>Utiliser cette application pour ajouter la "Une de journal" de votre choix à votre photo.</h4>
+
+    <form method=post enctype=multipart/form-data>
+
+        <input type=file name=file>
+        <input type=submit value=Upload>
+    </form>
+</div>
+    <div class="column">
+        <h1>Example</h1>
+        <img alt="image" src="{{url_for('static', filename=session.get('img_name'))}}" height="500px">
+    </div>
+</div>
 </body>
+
+<style>
+
+
+    .column {
+        flex: 50%;
+    }
+
+    .page {
+        padding-top: 50px;
+        padding-right: 30px;
+        padding-bottom: 50px;
+        padding-left: 80px;
+    }
+</style>
+
 </html>

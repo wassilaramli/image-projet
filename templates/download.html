@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Download</title>
+</head>
+<body>
+<div class="page">
+        <img alt="image" src="{{url_for('static', filename=session.get('img_name'))}}" height="500px">
+
+<form action="/download" method="post">
+
+            <input type="submit" name="download" value="Download">
+        </form>
+    <h4><a href="/">Recommencer</a></h4>
+    </div>
+</body>
+</html>
+
+<style>
+
+    .page {
+  padding-top: 50px;
+  padding-right: 30px;
+  padding-bottom: 50px;
+  padding-left: 80px;
+}
+</style>
