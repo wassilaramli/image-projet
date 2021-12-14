@@ -118,6 +118,7 @@ def show():
 @app.route('/edit', methods=['POST', 'GET'])
 def edit_image():
     if request.method == 'POST':
+        print(request.form)
         if request.form.get('black') == 'Black and White':
             print('to black and white...')
             image = Image.open(get_file())
@@ -125,37 +126,40 @@ def edit_image():
 
             image.save(get_file())
 
-        if request.form.get('reset') == 'Reset':
+        elif request.form.get('reset') == 'Annuler':
             reset_image()
 
-        if request.form.get('brightnessplus') == 'Augmenter luminosité':
+        elif request.form.get('brightnessplus'):
             print('increase brightness...')
             image = Image.open(get_file())
             enhancer = ImageEnhance.Brightness(image)
             im_output = enhancer.enhance(1.5)
             im_output.save(get_file())
 
-        if request.form.get('saturationplus') == 'Augmenter saturation':
+        elif request.form.get('saturationplus'):
             print('increase brightness...')
             image = Image.open(get_file())
             enhancer = ImageEnhance.Color(image)
             im_output = enhancer.enhance(1.5)
             im_output.save(get_file())
 
-        if request.form.get('brightnessminus') == 'Diminuer luminosité':
+        elif request.form.get('brightnessminus'):
             print('decrease brightness...')
             image = Image.open(get_file())
             enhancer = ImageEnhance.Brightness(image)
             im_output = enhancer.enhance(0.5)
             im_output.save(get_file())
 
-        if request.form.get('continue') == 'Continue ->':
+        elif request.form.get('continue'):
             image = Image.open(get_file())
             image.save(UPLOAD_FOLDER + "/original" + session.get('img_name'))
             return render_template('newspaper.html')
 
-        if request.form.get('download') == 'Download':
+        elif request.form.get('download'):
             return render_template('download.html')
+
+        else:
+            print("couldn't find which request it was? ")
 
     return render_template('index.html')
 
@@ -198,6 +202,6 @@ def down():
     return render_template('download.html')
 
 
-#app.run()
+app.run()
 
 
