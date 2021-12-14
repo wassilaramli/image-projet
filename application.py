@@ -80,7 +80,7 @@ def connect_newspaper(newspaper):
 
 
 def download():
-    print("downloading...")
+    print(f"downloading...{get_file()}")
 
     return send_file(get_file(), mimetype='image/jpeg', as_attachment=True)
 
@@ -132,6 +132,13 @@ def edit_image():
             print('increase brightness...')
             image = Image.open(get_file())
             enhancer = ImageEnhance.Brightness(image)
+            im_output = enhancer.enhance(1.5)
+            im_output.save(get_file())
+
+        if request.form.get('saturationplus') == 'Augmenter saturation':
+            print('increase brightness...')
+            image = Image.open(get_file())
+            enhancer = ImageEnhance.Color(image)
             im_output = enhancer.enhance(1.5)
             im_output.save(get_file())
 
@@ -192,3 +199,5 @@ def down():
 
 
 #app.run()
+
+
