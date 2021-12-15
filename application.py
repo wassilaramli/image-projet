@@ -187,7 +187,7 @@ def add_newspaper():
         elif request.form.get('reset'):
             reset_image()
 
-        elif request.form.get('download'):
+        elif request.form.get('continue'):
             return render_template('download.html')
 
     return render_template('newspaper.html')

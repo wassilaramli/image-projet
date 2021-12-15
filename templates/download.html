@@ -15,25 +15,23 @@
           <span class="navbar-toggler-icon"></span>
         </button>
              <!-- Logo Image -->
-        <img src="img/logoEyeSmart_3.png" width="230" alt="" class="d-inline-block align-middle mr-2">
+        <img src="../static/logoEyeSmart_3.png" width="230" alt="" class="d-inline-block align-middle mr-2">
         <div class="collapse navbar-collapse" id="navbarTogglerDemo01" style="margin-left: 8%">
           <a class="navbar-brand" href="#">Téléchargez votre Une</a>
           <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
 
             <li class="nav-item">
-              <a class="nav-link disabled" href="#">Chargement</a>
+              <a class="nav-link" href="/upload">Chargement</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link disabled" href="#">Retouches</a>
+              <a class="nav-link" href="/edit">Retouches</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link disabled" href="#">Couvertures</a>
+                <a class="nav-link" href="/newsletter">Couvertures</a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link disabled" href="#">Personnalisation</a>
-              </li>
+
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Téléchargement <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="/download">Téléchargement <span class="sr-only">(current)</span></a>
                   </li>
           </ul>
         </div>
@@ -43,9 +41,9 @@
 
         <div style ="margin-top: 30%">
             <form action="/download" method="post">
-                <input class="btn btn-secondary btn-lg btn-block" type="submit" name="download" value="Télécharger">
+                <input class="btn btn-secondary btn-lg btn-block" type="submit" name="download" value="Télécharger" style="background-color: #C17227">
             </form>
-        <a class="btn btn-secondary btn-lg btn-block" style ="margin-top: 3px; background-color: #C17227" href="/"role="button"> Annuler </a>
+        <a class="btn btn-secondary btn-lg btn-block" style ="margin-top: 3px;" href="/upload"role="button"> Recommencer </a>
         </div>
     </div>
 
