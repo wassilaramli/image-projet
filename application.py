@@ -201,7 +201,7 @@ def down():
 
     return render_template('download.html')
 
-
-app.run()
+if __name__ == "__main__":
+    app.run()
 
 
