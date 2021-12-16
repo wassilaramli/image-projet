@@ -2,7 +2,7 @@ import shutil
 import os
 from werkzeug.utils import secure_filename
 from os.path import join, dirname, realpath
-
+from image_editing import increase_brightness, decrease_brightness
 from PIL import Image, ImageEnhance
 
 from flask import Flask, render_template, request, redirect, session, flash, send_file
@@ -31,10 +31,12 @@ def reset_image():
     image_original = Image.open(UPLOAD_FOLDER + "/original" + session.get('img_name'))
     image_original.save(get_file())
 
+
 def get_ratio(image):
     width, height = image.size
     print(f"initial image ratio: {width / height}")
     return width, height
+
 
 def connect_newspaper(newspaper):
     reset_image()
@@ -64,7 +66,8 @@ def connect_newspaper(newspaper):
 
     if height > news_height:
         print("image est trop haute, cropping!")
-        image = image.crop((  (width/2-news_width/2), (height/2-news_height/2), (width/2+news_width/2), (height/2+news_height/2)  ) )
+        image = image.crop(((width / 2 - news_width / 2), (height / 2 - news_height / 2), (width / 2 + news_width / 2),
+                            (height / 2 + news_height / 2)))
         width, height = get_ratio(image)
 
     if width > news_width:
@@ -130,25 +133,17 @@ def edit_image():
             reset_image()
 
         elif request.form.get('brightnessplus'):
-            print('increase brightness...')
-            image = Image.open(get_file())
-            enhancer = ImageEnhance.Brightness(image)
-            im_output = enhancer.enhance(1.5)
-            im_output.save(get_file())
+            increase_brightness(get_file())
 
         elif request.form.get('saturationplus'):
-            print('increase brightness...')
+            print('increase saturation...')
             image = Image.open(get_file())
             enhancer = ImageEnhance.Color(image)
             im_output = enhancer.enhance(1.5)
             im_output.save(get_file())
 
         elif request.form.get('brightnessminus'):
-            print('decrease brightness...')
-            image = Image.open(get_file())
-            enhancer = ImageEnhance.Brightness(image)
-            im_output = enhancer.enhance(0.5)
-            im_output.save(get_file())
+            decrease_brightness(get_file())
 
         elif request.form.get('continue'):
             image = Image.open(get_file())
@@ -195,13 +190,11 @@ def add_newspaper():
 
 @app.route('/download', methods=['POST', 'GET'])
 def down():
-
     if request.method == 'POST':
         return download()
 
     return render_template('download.html')
 
+
 if __name__ == "__main__":
     app.run()
-
-
