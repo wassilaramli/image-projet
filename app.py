@@ -2,7 +2,7 @@ import shutil
 import os
 from werkzeug.utils import secure_filename
 from os.path import join, dirname, realpath
-from image_editing import increase_brightness, decrease_brightness
+from image_editing import increase_brightness, decrease_brightness, increase_contrast, decrease_contrast
 from PIL import Image, ImageEnhance
 
 from flask import Flask, render_template, request, redirect, session, flash, send_file
@@ -17,7 +17,10 @@ app.config['SECRET_KEY'] = 'super secret key'
 
 
 def get_file():
-    return UPLOAD_FOLDER + "/" + session.get('img_name')
+    if session.get('img_name'):
+        return UPLOAD_FOLDER + "/" + session.get('img_name')
+    else:
+        flash("We could not identify your file. Download failed")
 
 
 def allowed_file(filename):
@@ -27,6 +30,7 @@ def allowed_file(filename):
 
 def reset_image():
     print('reset the file...')
+    flash("Your image has been reset")
     print(UPLOAD_FOLDER + "/" + session.get('img_name'))
     image_original = Image.open(UPLOAD_FOLDER + "/original" + session.get('img_name'))
     image_original.save(get_file())
@@ -122,25 +126,23 @@ def show():
 def edit_image():
     if request.method == 'POST':
         print(request.form)
-        if request.form.get('black') == 'Black and White':
+        if request.form.get('black'):
             print('to black and white...')
             image = Image.open(get_file())
-            image = image.convert('1')
+            image = image.convert('L')
 
             image.save(get_file())
 
-        elif request.form.get('reset') == 'Annuler':
+        elif request.form.get('reset'):
             reset_image()
 
         elif request.form.get('brightnessplus'):
             increase_brightness(get_file())
 
-        elif request.form.get('saturationplus'):
-            print('increase saturation...')
-            image = Image.open(get_file())
-            enhancer = ImageEnhance.Color(image)
-            im_output = enhancer.enhance(1.5)
-            im_output.save(get_file())
+        elif request.form.get('contrastplus'):
+            increase_contrast(get_file())
+        elif request.form.get('contrastminus'):
+            decrease_contrast(get_file())
 
         elif request.form.get('brightnessminus'):
             decrease_brightness(get_file())
@@ -162,7 +164,7 @@ def edit_image():
 @app.route('/newspaper', methods=['GET', 'POST'])
 def add_newspaper():
     if request.method == 'GET':
-        connect_newspaper("news.png")
+        pass
 
     elif request.method == 'POST':
         print(request.form)
