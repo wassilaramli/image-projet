@@ -2,7 +2,7 @@ import shutil
 import os
 from werkzeug.utils import secure_filename
 from os.path import join, dirname, realpath
-from image_editing import increase_brightness, decrease_brightness, increase_contrast, decrease_contrast
+from image_editing import increase_brightness, decrease_brightness, increase_contrast, decrease_contrast, crop
 from PIL import Image, ImageEnhance
 
 from flask import Flask, render_template, request, redirect, session, flash, send_file
@@ -189,6 +189,31 @@ def add_newspaper():
 
     return render_template('newspaper.html')
 
+
+@app.route('/resize', methods=['GET', 'POST'])
+def resize_img():
+
+    if request.method == 'POST':
+        if request.form.get('up'):
+            print('remove upper part')
+            crop(get_file(), "up")
+
+        elif request.form.get('right'):
+            print('remove right part')
+            crop(get_file(), "right")
+
+        elif request.form.get('left'):
+            print('remove left part')
+            crop(get_file(), "left")
+        elif request.form.get('down'):
+            print('remove bottom part')
+            crop(get_file(), "bottom")
+
+        elif request.form.get('reset'):
+            reset_image()
+
+
+    return render_template('resize.html')
 
 @app.route('/download', methods=['POST', 'GET'])
 def down():
