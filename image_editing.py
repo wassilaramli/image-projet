@@ -1,7 +1,4 @@
-import PIL
-from flask import send_file
 
-from io import BytesIO
 from PIL import Image, ImageEnhance
 
 def decrease_brightness(image_path):
@@ -56,3 +53,6 @@ def crop(image_path, where):
 
     image = image.crop((left, top, right, bottom))
     image.save(image_path)
+
+
+

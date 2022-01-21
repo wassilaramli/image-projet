@@ -150,10 +150,10 @@ def edit_image():
         elif request.form.get('continue'):
             image = Image.open(get_file())
             image.save(UPLOAD_FOLDER + "/original" + session.get('img_name'))
-            return render_template('newspaper.html')
+            return redirect('/resize')
 
         elif request.form.get('download'):
-            return render_template('download.html')
+            return redirect('/download')
 
         else:
             print("couldn't find which request it was? ")
@@ -185,6 +185,8 @@ def add_newspaper():
             reset_image()
 
         elif request.form.get('continue'):
+            image = Image.open(get_file())
+            image.save(UPLOAD_FOLDER + "/original" + session.get('img_name'))
             return render_template('download.html')
 
     return render_template('newspaper.html')
@@ -197,23 +199,35 @@ def resize_img():
         if request.form.get('up'):
             print('remove upper part')
             crop(get_file(), "up")
+            return render_template('resize.html')
 
         elif request.form.get('right'):
             print('remove right part')
             crop(get_file(), "right")
+            return render_template('resize.html')
 
         elif request.form.get('left'):
             print('remove left part')
             crop(get_file(), "left")
+            return render_template('resize.html')
         elif request.form.get('down'):
             print('remove bottom part')
             crop(get_file(), "bottom")
+            return render_template('resize.html')
 
         elif request.form.get('reset'):
             reset_image()
+            return render_template('resize.html')
 
+        elif request.form.get('continue'):
+            image = Image.open(get_file())
+            image.save(UPLOAD_FOLDER + "/original" + session.get('img_name'))
+            return redirect('/newspaper')
 
     return render_template('resize.html')
+
+
+
 
 @app.route('/download', methods=['POST', 'GET'])
 def down():
