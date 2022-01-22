@@ -1,5 +1,5 @@
 
-from PIL import Image, ImageEnhance
+from PIL import Image, ImageEnhance, ImageFilter
 
 def decrease_brightness(image_path):
     print('decrease brightness...')
@@ -32,6 +32,14 @@ def increase_contrast(image_path):
     im_output = enhancer.enhance(1.5)
     im_output.save(image_path)
     return True
+
+def increase_blur(image_path):
+    print("blur file")
+    image = Image.open(image_path)
+    image = image.filter(ImageFilter.BLUR)
+    image.save(image_path)
+
+
 
 
 def crop(image_path, where):

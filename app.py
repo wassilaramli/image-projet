@@ -2,7 +2,7 @@ import shutil
 import os
 from werkzeug.utils import secure_filename
 from os.path import join, dirname, realpath
-from image_editing import increase_brightness, decrease_brightness, increase_contrast, decrease_contrast, crop
+from image_editing import increase_brightness, decrease_brightness, increase_contrast, decrease_contrast, crop, increase_blur
 from PIL import Image, ImageEnhance
 
 from flask import Flask, render_template, request, redirect, session, flash, send_file
@@ -139,6 +139,9 @@ def edit_image():
         elif request.form.get('brightnessplus'):
             increase_brightness(get_file())
 
+        elif request.form.get('blur'):
+            increase_blur(get_file())
+
         elif request.form.get('contrastplus'):
             increase_contrast(get_file())
         elif request.form.get('contrastminus'):
@@ -180,6 +183,13 @@ def add_newspaper():
         if request.form.get('paris-match'):
             connect_newspaper("paris-match.png")
 
+        if request.form.get('top-model'):
+            connect_newspaper("top-model.png")
+        if request.form.get('public'):
+            connect_newspaper("public.png")
+        if request.form.get('petit-prince'):
+            connect_newspaper("petit-prince.png")
+
 
         elif request.form.get('reset'):
             reset_image()
@@ -187,7 +197,7 @@ def add_newspaper():
         elif request.form.get('continue'):
             image = Image.open(get_file())
             image.save(UPLOAD_FOLDER + "/original" + session.get('img_name'))
-            return render_template('download.html')
+            return redirect('/download')
 
     return render_template('newspaper.html')
 

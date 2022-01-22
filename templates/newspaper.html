@@ -3,46 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <title>Eyesmart | Des outils pour interrroger l'infox et voir malin</title>
-    <link rel="shortcut icon" href="img/eyesmart-logo_0.png" sizes="32x32" type="image/png">
-     <!-- Required meta tags -->
-     <meta charset="UTF-8">
-     <!-- Bootstrap CSS -->
-     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="static/eyesmart-logo_0.png" sizes="32x32" type="image/png">
+    <!-- Required meta tags -->
+    <meta charset="UTF-8">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+            integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+            crossorigin="anonymous"></script>
 </head>
 <body>
-  <div >
+<div>
     <a class="navbar-brand ml-3" href="https://eyesmart.media/" style="display:block ;text-align:center ">
-        <img src="img/eyesmart-logo.png" height="30px" width="auto" alt="logo" >
+        <img src="static/eyesmart-logo.png" height="30px" width="auto" alt="logo">
     </a>
-  </div>
-      <nav class="navbar navbar-expand-lg navbar-light " style="background-color: #C17227; text-decoration-color:#808080; box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px">
-             <!-- Logo Image -->
-        <img src="img/eye-removebg-preview.png" alt="" class="d-inline-block align-middle mr-2" style="margin-left: 8%">
-        <div class="collapse navbar-collapse" id="navbarTogglerDemo01" style="margin-left: 8%">
-          <a class="navbar-brand" href="#">Uploadez votre Une</a>
-          <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+</div>
+<nav class="navbar navbar-expand-lg navbar-light "
+     style="background-color: #C17227; text-decoration-color:#808080; box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px">
+    <!-- Logo Image -->
+    <img src="static/eye-removebg-preview.png" alt="" class="d-inline-block align-middle mr-2" style="margin-left: 8%">
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo01" style="margin-left: 8%">
+        <a class="navbar-brand" href="#">Uploadez votre Une</a>
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
             <li class="nav-item ">
                 <a class="nav-link" href="/upload">Chargement </a>
-              </li>
+            </li>
             <li class="nav-item">
-              <a class="nav-link" href="/index">Retouches</a>
+                <a class="nav-link" href="/index">Retouches</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/resize">Recadrage<span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item active">
                 <a class="nav-link" href="/newspaper">Couvertures<span class="sr-only">(current)</span></a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link disabled" href="/resize">Personnalisation</a>
-              </li>
-              <li class="nav-item">
+            </li>
+            <li class="nav-item">
+                <a class="nav-link disabled" href="/resize">Recadrage</a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link disabled" href="/download">Téléchargement</a>
-              </li>
-              </li>
+            </li>
+            </li>
 
-          </ul>
-        </div>
-    </nav> 
-    <h1 style="text-align:center; margin-top: 25px;color:#808080">Créez votre Une de journal ou de magazine<img src="https://img.icons8.com/color/60/000000/detective.png"></h1>  
+        </ul>
+    </div>
+</nav>
+<h1 style="text-align:center; margin-top: 25px;color:#808080">Créez votre Une de journal ou de magazine<img
+        src="https://img.icons8.com/color/60/000000/detective.png"></h1>
 
 <div class="row" class="row align-items-center">
     <div class="col shadow p-3 mb-5 bg-white rounded">
@@ -54,17 +62,22 @@
         <h2 style="text-align:center; margin-top: 25px;color:#808080"> Choisissez une couverture</h2>
 
 
-
         <form action="/newspaper" method="post">
             <ul style="list-style: none; margin-top: 25px; text-align:center">
-            <li style="margin-top: 10px;"><input type="submit" name="declic-junior" value="Declic Junior"></li>
-            <li style="margin-top: 10px;"><input type="submit" name="elle-maigrir" value="Elle Maigrir"></li>
-            <li style="margin-top: 10px;"><input type="submit" name="journal-mickey" value="Journal Mickey"></li>
-            <li style="margin-top: 10px;"><input type="submit" name="paris-match" value="Paris Match"></li>
-            <li style="margin-top: 40px;"><input type="submit" name="continue" value="Valider" class="btn btn-secondary btn-lg btn-block" style="background-color: #C17227"></li>
-            <li><input type="submit" name="reset" value="Annuler" class="btn btn-secondary btn-lg btn-block" style="margin-top: 10px;"></li>
+                <li style="margin-top: 10px;"><input type="submit" name="declic-junior" value="Declic Junior"></li>
+                <li style="margin-top: 10px;"><input type="submit" name="elle-maigrir" value="Elle Maigrir"></li>
+                <li style="margin-top: 10px;"><input type="submit" name="journal-mickey" value="Journal Mickey"></li>
+                <li style="margin-top: 10px;"><input type="submit" name="paris-match" value="Paris Match"></li>
+                <li style="margin-top: 10px;"><input type="submit" name="top-model" value="Top Model"></li>
+                <li style="margin-top: 10px;"><input type="submit" name="public" value="Public"></li>
+                <li style="margin-top: 10px;"><input type="submit" name="petit-prince" value="Petit Prince"></li>
+                <li style="margin-top: 40px;"><input type="submit" name="continue" value="Valider"
+                                                     class="btn btn-secondary btn-lg btn-block"
+                                                     style="background-color: #C17227"></li>
+                <li><input type="submit" name="reset" value="Annuler" class="btn btn-secondary btn-lg btn-block"
+                           style="margin-top: 10px;"></li>
 
-        </ul>
+            </ul>
         </form>
 
 
@@ -72,23 +85,28 @@
 </div>
 
 
-    <!-- Optional JavaScript -->
-     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
 </body>
 <style>
     .row {
-      display: flex;
+        display: flex;
     }
+
     .col {
-      flex: 1;
-      padding: 1em;
-      margin-top: 40px;
-      margin-left: 30px;
-      margin-right: 30px;
-      margin-bottom: 25px;
-      height: 450px;
+        flex: 1;
+        padding: 1em;
+        margin-top: 40px;
+        margin-left: 30px;
+        margin-right: 30px;
+        margin-bottom: 25px;
+        height: 450px;
     }
-  </style>
+</style>
 </html>
