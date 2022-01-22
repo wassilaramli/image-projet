@@ -46,26 +46,24 @@
 <h1 style="text-align:center; margin-top: 25px;color:#808080">Créez votre Une de journal ou de magazine<img src="https://img.icons8.com/color/60/000000/detective.png"></h1>
 <div class="row" class="row align-items-center">
     <div class="col shadow p-3 mb-5 bg-white rounded">
-        <h2 style="text-align:center; margin-top: 25px;color:#808080"> Visualisation</h2>
+        <h2 style="text-align:center; margin-top: 5px;color:#808080"> Visualisation</h2>
 
         <img alt="image" src="{{url_for('static', filename=session.get('img_name'))}}" height="500px">
     </div>
 
     <div class="col shadow p-3 mb-5 bg-white rounded">
-        <h2 style="text-align:center; margin-top: 25px;color:#808080"> Retouches</h2>
-
+        <h2 style="text-align:center; margin-top: 5px;color:#808080"> Retouches</h2>
  <form method="post" >
     <ul style="list-style: none; margin-top: 25px; text-align:center">
-    <li style="margin-top: 10px;"><input type="submit" name="black" value="Noir et blanc"></li>
-    <li style="margin-top: 10px;"><input type="submit" name="brightnessplus" value="Augmenter luminosité"></li>
-        <li style="margin-top: 10px;"><input type="submit" name="blur" value="Flou-ter"></li>
-    <li style="margin-top: 10px;" ><input type="submit" name="brightnessminus" value="Diminuer luminosité"></li>
-    <li style="margin-top: 10px;" ><input type="submit" name="contrastplus" value="Augmenter contraste"></li>
-        <li style="margin-top: 10px;" ><input type="submit" name="contrastminus" value="Diminuer contraste"></li>
-    <li style="margin-top: 60px;"><input type="submit" name="continue" value="Valider" class="btn btn-secondary btn-lg btn-block" style="background-color: #C17227;"></li>
+    <li style="margin-top: 10px;"><label for="NB"> Effet noir et blanc : </label> <input type="submit" id="NB" name="black" value="+" style="font-weight: bold;"></li>
+    <li style="margin-top: 10px;"><label for="plusluminosité"> Augumenter la luminosité : </label> <input type="submit" id="plusluminosité" name="brightnessplus" value="+"style="font-weight: bold;"></li>
+    <li style="margin-top: 10px;" ><label for="moinsluminosité"> Diminuer la luminosité : </label> <input type="submit" id="moinsluminosité" name="brightnessminus" value="-"style="font-weight: bold;"></li>
+    <li style="margin-top: 10px;" ><label for="pluscontrast"> Augumenter le contraste : </label> <input type="submit" id="pluscontrast" name="contrastplus" value="+"style="font-weight: bold;"></li>
+    <li style="margin-top: 10px;" ><label for="moinscontrast"> Diminuer le contraste : </label> <input type="submit" id="moinscontrast" name="contrastminus" value="-"style="font-weight: bold;"></li>
+    <li style="margin-top: 10px;"><label for="flou"> Effet flou : </label> <input type="submit" id="flou" name="blur" value="+"style="font-weight: bold;"></li>
+    <li style="margin-top: 15px;"><input type="submit" name="continue" value="Valider" class="btn btn-secondary btn-lg btn-block" style="background-color: #C17227;"></li>
     <li style="margin-top: 10px;"><input type="submit" name="reset" value="Recommencer" class="btn btn-secondary btn-lg btn-block" ></li>
     <li style="margin-top: 10px;"><input type="submit" name="download" value="Télécharger" class="btn btn-secondary btn-lg btn-block" style="background-color: #C17227;"></li>
-
     </ul>
     </form>
     </div>
