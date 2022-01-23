@@ -2,7 +2,7 @@ import unittest
 from os.path import join, dirname, realpath
 from PIL import Image
 
-from image_editing import increase_brightness, decrease_brightness
+from image_editing import increase_brightness, decrease_brightness, increase_blur
 
 
 class TestImageEditing(unittest.TestCase):
@@ -18,6 +18,11 @@ class TestImageEditing(unittest.TestCase):
     def test_dec_brightness(self):
         test_file_path = join(dirname(realpath(__file__)), 'static') + "/" + "testpic.png"
         success = decrease_brightness(test_file_path)
+        self.assertEqual(success, True)
+
+    def test_flouter(self):
+        test_file_path = join(dirname(realpath(__file__)), 'static') + "/" + "testpic.png"
+        success = increase_blur(test_file_path)
         self.assertEqual(success, True)
 
     def test_reset(self):

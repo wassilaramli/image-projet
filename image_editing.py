@@ -38,6 +38,7 @@ def increase_blur(image_path):
     image = Image.open(image_path)
     image = image.filter(ImageFilter.BLUR)
     image.save(image_path)
+    return True
 
 
 
