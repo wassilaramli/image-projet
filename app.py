@@ -89,7 +89,7 @@ def connect_newspaper(newspaper):
 def download():
     print(f"downloading...{get_file()}")
 
-    return send_file(get_file(), mimetype='image/jpeg', as_attachment=True)
+    return send_file(get_file(), as_attachment=True)
 
 
 @app.route('/upload', methods=['GET', 'POST'])
