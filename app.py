@@ -16,12 +16,15 @@ app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 app.config['SECRET_KEY'] = 'super secret key'
 
 
-def get_file(dev=True):
+def get_file(dev=False):
     if dev:
         test_file_path = join(dirname(realpath(__file__)), 'static') + "/" + "testpic.png"
+
         return test_file_path
     if session.get('img_name'):
-        return UPLOAD_FOLDER + "/" + session.get('img_name')
+        path = os.path.join(app.root_path, app.config['UPLOAD_FOLDER']) + "/" + session.get('img_name')
+        print(path)
+        return path
     else:
         flash("We could not identify your file. Download failed")
         return None

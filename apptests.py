@@ -6,7 +6,7 @@ from scripts import call_app
 
 from image_editing import increase_brightness, decrease_brightness, increase_blur
 
-
+# make sure to update the get_file(dev=True) function for the tests to work!
 
 class TestImageEditing(unittest.TestCase):
 
