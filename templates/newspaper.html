@@ -56,7 +56,7 @@
     <div class="col shadow p-3 mb-5 bg-white rounded">
         <h2 style="text-align:center; margin-top: 5px;color:#808080"> Visualisation</h2>
 
-        <img alt="image" src="{{url_for('static', filename=session.get('img_name'))}}" height="500px">
+        <img alt="image" src="{{url_for('static', filename=session.get('img_name') if session.get('img_name') else 'static/testpic.png')}}" height="500px">
     </div>
     <div div class="col shadow p-3 mb-5 bg-white rounded">
         <h2 style="text-align:center; margin-top: 5px;color:#808080"> Choisissez une couverture</h2>

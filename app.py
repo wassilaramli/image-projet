@@ -16,11 +16,16 @@ app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 app.config['SECRET_KEY'] = 'super secret key'
 
 
-def get_file():
+def get_file(dev=True):
+    if dev:
+        test_file_path = join(dirname(realpath(__file__)), 'static') + "/" + "testpic.png"
+        return test_file_path
     if session.get('img_name'):
         return UPLOAD_FOLDER + "/" + session.get('img_name')
     else:
         flash("We could not identify your file. Download failed")
+        return None
+
 
 
 def allowed_file(filename):
@@ -31,8 +36,7 @@ def allowed_file(filename):
 def reset_image():
     print('reset the file...')
     flash("Your image has been reset")
-    print(UPLOAD_FOLDER + "/" + session.get('img_name'))
-    image_original = Image.open(UPLOAD_FOLDER + "/original" + session.get('img_name'))
+    image_original = Image.open(get_file())
     image_original.save(get_file())
 
 
@@ -101,6 +105,7 @@ def upload_image():
         # check if the post request has the file part
         if 'file' not in request.files:
             flash('No file part')
+            print("no file!")
             return redirect('/upload')
         file = request.files['file']
         # If the user does not select a file, the browser submits an
@@ -114,6 +119,7 @@ def upload_image():
             shutil.copy(os.path.join(app.config['UPLOAD_FOLDER'] + "/" + filename),
                         os.path.join(app.config['UPLOAD_FOLDER'] + "/" + "original" + filename))
             session['img_name'] = filename
+            print("successfully uploaded file!")
             return redirect('/edit')
 
 
